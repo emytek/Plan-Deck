@@ -2,7 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
-// import { useGetAuthUserQuery, useGetProjectsQuery } from "@/state/api";
+import { useGetProjectsQuery } from "@/state/api";
 // import { signOut } from "aws-amplify/auth";
 import {
   AlertCircle,
@@ -31,7 +31,7 @@ const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
 
-//   const { data: projects } = useGetProjectsQuery();
+  const { data: projects } = useGetProjectsQuery();
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
@@ -113,37 +113,16 @@ ${isSidebarCollapsed ? "w-0 hidden" : "w-64"}
           )}
         </button>
         {/* PROJECTS LIST */}
-        {/* {showProjects &&
-          projects?.map((project) => ( */}
-            {/* <SidebarLink
+        {/* PROJECTS LIST */}
+        {showProjects &&
+          projects?.map((project) => (
+            <SidebarLink
               key={project.id}
               icon={Briefcase}
               label={project.name}
               href={`/projects/${project.id}`}
-            /> */}
-
-            <SidebarLink
-              icon={AlertCircle}
-              label="Urgent"
-              href="/priority/urgent"
             />
-            <SidebarLink
-              icon={ShieldAlert}
-              label="High"
-              href="/priority/high"
-            />
-            <SidebarLink
-              icon={AlertTriangle}
-              label="Medium"
-              href="/priority/medium"
-            />
-            <SidebarLink icon={AlertOctagon} label="Low" href="/priority/low" />
-            <SidebarLink
-              icon={Layers3}
-              label="Backlog"
-              href="/priority/backlog"
-            />
-          {/* ))}  */}
+          ))}  
 
         {/* PRIORITIES LINKS */}
         <button
