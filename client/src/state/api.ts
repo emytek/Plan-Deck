@@ -154,17 +154,17 @@ export const api = createApi({
         { type: "Tasks", id: taskId },
       ],
     }),
-    // getUsers: build.query<User[], void>({
-    //   query: () => "users",
-    //   providesTags: ["Users"],
-    // }),
-    // getTeams: build.query<Team[], void>({
-    //   query: () => "teams",
-    //   providesTags: ["Teams"],
-    // }),
-    // search: build.query<SearchResults, string>({
-    //   query: (query) => `search?query=${query}`,
-    // }),
+    getUsers: build.query<User[], void>({
+      query: () => "users",
+      providesTags: ["Users"],
+    }),
+    getTeams: build.query<Team[], void>({
+      query: () => "teams",
+      providesTags: ["Teams"],
+    }),
+    search: build.query<SearchResults, string>({
+      query: (query) => `search?query=${query}`,
+    }),
   }),
 });
 
@@ -174,9 +174,9 @@ export const {
   useGetTasksQuery,
   useCreateTaskMutation,
   useUpdateTaskStatusMutation,
-//   useSearchQuery,
-//   useGetUsersQuery,
-//   useGetTeamsQuery,
+  useSearchQuery,
+  useGetUsersQuery,
+  useGetTeamsQuery,
   useGetTasksByUserQuery,
 //   useGetAuthUserQuery,
 } = api;
